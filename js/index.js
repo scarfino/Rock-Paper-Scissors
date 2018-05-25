@@ -64,7 +64,7 @@ function determineWinner(userChoice, computerChoice) {
 function playGame() {
   var userChoice = getUserChoice();
   var computerChoice = getComputerChoice();
-  console.log('You chose ' + userChoice + ', and the AI chose ' + computerChoice);
+  console.log('You chose ' + userChoice + ', and the computer chose ' + computerChoice);
   console.log(determineWinner(userChoice, computerChoice));
 }
 
