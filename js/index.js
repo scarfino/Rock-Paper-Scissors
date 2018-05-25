@@ -2,18 +2,22 @@
 Rock Paper Scisscors game versus "AI"
 @scarfino 2018
 */
-const getUserChoice = userInput => {
+
+//user chooses attack
+function getUserChoice() {
+  var userInput = 'scissors'; //type in your selection here between the ''
   userInput = userInput.toLowerCase();
-  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
+
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb') {
     return userInput;
   } else {
-    console.log('Error!');
+    console.log('Error');
   }
 }
 
+//AI (computer) chooses attack
 function getComputerChoice() {
   randomNumber = Math.floor(Math.random() * 3);
-
   switch (randomNumber) {
     case 0:
       return 'rock';
@@ -23,6 +27,45 @@ function getComputerChoice() {
       return 'scissors';
   }
 }
+//determine outcome
+function determineWinner(userChoice, computerChoice) {
+  if (userChoice === computerChoice) {
+    return 'It\'s a tie!';
+  }
+  if (userChoice === 'rock') {
+    if (computerChoice === 'paper') {
+      return 'The computer won!';
+    } else {
+      return 'You won!';
+    }
+  }
+  if (userChoice === 'paper') {
+    if (computerChoice === 'scissors') {
+      return 'The computer won!';
+    } else {
+      return 'You won!';
+    }
+  }
+  if (userChoice === 'scissors') {
+    if (computerChoice === 'rock') {
+      return 'The computer won!';
+    } else {
+      return 'You won!';
+    }
+  }
+  if (userChoice === 'bomb') {
+    return 'You won...cheater.';
+  }
 
-console.log(getUserChoice('Paper')); //print users choice
-console.log(getComputerChoice()); // print rock, paper or scissors
+}
+
+
+// play the game
+function playGame() {
+  var userChoice = getUserChoice();
+  var computerChoice = getComputerChoice();
+  console.log('You chose ' + userChoice + ', and the AI chose ' + computerChoice);
+  console.log(determineWinner(userChoice, computerChoice));
+}
+
+playGame();
